@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: laravel_app
+        container_name: laravel_app
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
+        working_dir: /var/www
+        command: php artisan serve --host=0.0.0.0 --port=8000
+
+    db:
+        image: mysql:8
+        container_name: mysql_db
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: selise
+            MYSQL_DATABASE: book_lending_system
+            MYSQL_USER: selise
+            MYSQL_PASSWORD: selise
+        ports:
+            - "3306:3306"
+        volumes:
+            - dbdata:/var/lib/mysql
+volumes:
+    dbdata:
