@@ -15,7 +15,6 @@ namespace Tests\Unit;
     use Carbon\Carbon;
     use PHPUnit\Framework\MockObject\MockObject;
     use Tests\TestCase;
-    use stdClass;
 
     /**
      * Class LoanServiceTest
