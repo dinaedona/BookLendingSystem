@@ -56,4 +56,12 @@ class Book
         return $this->availableCopies;
     }
 
+    /**
+     * @return bool check if is any copy
+     */
+    public function hasCopies(): bool
+    {
+        return $this->getAvailableCopies() > 0;
+    }
+
 }
